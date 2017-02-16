@@ -10,7 +10,7 @@ Instructions
 
 The ServletJDBCEngine sample contains a server definition for basic servlet support, and illustrates a simple datasource definition using an included configuration file. It uses Apache Derby (an open source relational database). Also included is a servlet which gets a connection to the database using the defined datasource, creates a table, inserts some data, retrieves the data, and prints the data out to the browser.
 
-Once the server is running, the application will be available under [http://localhost:9080/JDBCApp](http://localhost:9080/JDBCApp).
+Once the server is running, the application will be available under [localhost:9131/jaxws](http://localhost:9131/jaxws).
 
 ## Running in Eclipse with Maven
 
@@ -18,11 +18,7 @@ Once the server is running, the application will be available under [http://loca
 2. Right click the project and select `Run As` -> `Maven Clean`.
 3. Right click the project and select `Run As` -> `Maven Install`.
 4. Right click the project and select `Run As` -> `Maven Build...` then run the goal `liberty:install-server`.
-5. You should see the following in the console: `CWWKZ0001I: Application JAXWSWebSample started in XX.XX seconds.`
-
-In your browser, enter the URL for the application: http://localhost:9131/JAXWSWebSample/ (where port 9131 assumes the httpEndpoint provided in the sample server.xml has not been modified).
-There are 7 scenarios for different JAX-WS features in the left. You can navigate each scenario to experience these features.
-
+5. You should see the following in the console: `Application JAXWSWebSample started in XX.XX seconds.`
 
 ## Running with Maven
 
@@ -39,6 +35,9 @@ Use the following steps to run the application with Maven:
     ```bash
     $ mvn liberty:run-server
     ```
+
+In your browser, enter the URL for the application: [localhost:9131/jaxws](http://localhost:9131/jaxws/) (where port 9131 assumes the httpEndpoint provided in the sample server.xml has not been modified).
+There are 7 scenarios for different JAX-WS features in the left. You can navigate each scenario to experience these features.
 
 ## Deploying to Bluemix
 
