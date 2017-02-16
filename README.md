@@ -43,7 +43,7 @@ There are 7 scenarios for different JAX-WS features in the left. You can navigat
 
 Click the button below to deploy your own copy of this application to [Bluemix](https://bluemix.net).
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WASdev/sample.servlet.jdbc.git)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WASdev/sample.jaxws.web.git)
 
 # Notice
 
