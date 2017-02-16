@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>liberty.maven</groupId>
-	<artifactId>test</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>jaxws</artifactId>
+	<version>1</version>
 	<packaging>war</packaging>
-
+	
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -30,129 +30,19 @@
 
 
 		<!-- Liberty server properties -->
-		<wlpServerName>LibertyProjectServer</wlpServerName>
 		<testServerHttpPort>9080</testServerHttpPort>
 		<testServerHttpsPort>9443</testServerHttpsPort>
-		<!--This is set in the ibm-web-ext.xml file -->
-		<warContext>myLibertyApp</warContext>
-		<package.file>${project.build.directory}/${app.name}.jar</package.file>
-		<packaging.type>runnable</packaging.type>
+		<warContext>jaxws</warContext>
+		<package.file>${project.build.directory}/${project.artifactId}.zip</package.file>
+		<packaging.type>usr</packaging.type>
+</properties>
 
-		<!-- Cloud Foundry/Bluemix properties -->
-		<cf.context>mybluemix.net</cf.context>
-		<cf.target>https://api.ng.bluemix.net</cf.target>
-		<cf.space>dev</cf.space>
-		<cf.context.root>${cf.host}.${cf.context}/${warContext}</cf.context.root>
-
-		<!-- The Cloud Foundry or Bluemix organization, username and password can 
-			be entered here. -->
-		<!-- <cf.org></cf.org> -->
-		<!-- <cf.username></cf.username> -->
-		<!-- <cf.password></cf.password> -->
-		<!-- This is the host for your app in Bluemix and what it will be called 
-			in the dashboard. -->
-		<cf.host>${app.name}</cf.host>
-
-		<!-- Overriden in the Bluemix profile -->
-		<running.bluemix>false</running.bluemix>
-		<app.name>LibertyProject</app.name>
-	</properties>
 
 	<profiles>
 		<profile>
-			<id>bluemix</id>
-			<properties>
-				<running.bluemix>true</running.bluemix>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-enforcer-plugin</artifactId>
-						<version>1.4.1</version>
-						<executions>
-							<execution>
-								<id>enforce-bluemix-credentials</id>
-								<phase>initialize</phase>
-								<goals>
-									<goal>enforce</goal>
-								</goals>
-								<configuration>
-									<rules>
-										<requireProperty>
-											<property>cf.org</property>
-											<message>The cf.org property must be
-												provided with the bluemix
-												profile.</message>
-										</requireProperty>
-										<requireProperty>
-											<property>cf.username</property>
-											<message>The cf.username property
-												must be provided with the
-												bluemix profile.</message>
-										</requireProperty>
-										<requireProperty>
-											<property>cf.password</property>
-											<message>The cf.password property
-												must be provided with the
-												bluemix profile.</message>
-										</requireProperty>
-									</rules>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>initialize</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<echo
-											message="Running bluemix profile with the following properties:                                             cf.target=${cf.target}                                             cf.space=${cf.space}                                             cf.org=${cf.org}                                             cf.username=${cf.username}                                             The application will be accessed at context root ${cf.context.root}" />
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.cloudfoundry</groupId>
-						<artifactId>cf-maven-plugin</artifactId>
-						<version>1.1.3</version>
-						<configuration>
-							<target>${cf.target}</target>
-							<org>${cf.org}</org>
-							<space>${cf.space}</space>
-							<username>${cf.username}</username>
-							<password>${cf.password}</password>
-							<appname>${cf.host}</appname>
-							<memory>512</memory>
-						</configuration>
-						<executions>
-							<execution>
-								<id>push</id>
-								<phase>package</phase>
-								<goals>
-									<goal>push</goal>
-								</goals>
-								<configuration>
-									<path>${package.file}</path>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
 			<id>runnable</id>
 			<properties>
-				<package.file>${project.build.directory}/${app.name}.jar</package.file>
+				<package.file>${project.build.directory}/${project.artifactId}.jar</package.file>
 				<packaging.type>runnable</packaging.type>
 			</properties>
 		</profile>
@@ -222,16 +112,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<packagingExcludes>pom.xml</packagingExcludes>
-				</configuration>
-			</plugin>
 			<!-- Plugin to run unit tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -250,25 +132,15 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.10</version>
-				<executions>
-					<execution>
-						<id>copy-server-files</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<includeArtifactIds>server-snippet</includeArtifactIds>
-							<prependGroupId>true</prependGroupId>
-							<outputDirectory>${project.build.directory}/wlp/usr/servers/${wlpServerName}/configDropins/defaults</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			        <plugin> <!--  dynamic web project -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+        </configuration>
+    </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -281,12 +153,12 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/wlp/usr/servers/${wlpServerName}/dropins</outputDirectory>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/apps</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${project.build.directory}</directory>
 									<includes>
-										<include>${project.artifactId}-${project.version}.war</include>
+										<include>${project.artifactId}.war</include>
 									</includes>
 								</resource>
 							</resources>
@@ -294,6 +166,21 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-war-plugin</artifactId>
+        		<version>2.6</version>
+        		<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<packagingExcludes>pom.xml</packagingExcludes>
+         			<webResources>
+           				<resource>
+            			<!-- this is relative to the pom.xml directory -->
+             			<directory>resources</directory>
+            			</resource>
+          			</webResources>
+        		</configuration>
+      		</plugin>
 			<!-- Enable liberty-maven plugin -->
 			<plugin>
 				<groupId>net.wasdev.wlp.maven.plugins</groupId>
@@ -301,20 +188,21 @@
 				<version>1.2</version>
 				<extensions>true</extensions>
 				<configuration>
-					<serverName>${wlpServerName}</serverName>
 					<assemblyArtifact>
 						<groupId>com.ibm.websphere.appserver.runtime</groupId>
-						<artifactId>wlp-webProfile7</artifactId>
-						<version>16.0.0.3</version>
+						<artifactId>wlp-javaee7</artifactId>
+						<version>16.0.0.4</version>
 						<type>zip</type>
 					</assemblyArtifact>
-					<assemblyInstallDirectory>${project.build.directory}</assemblyInstallDirectory>
+					<!--assemblyInstallDirectory>${project.build.directory}</assemblyInstallDirectory-->
 					<configFile>src/main/liberty/config/server.xml</configFile>
 					<packageFile>${package.file}</packageFile>
 					<include>${packaging.type}</include>
 					<bootstrapProperties>
+					    <appContext>${warContext}</appContext>
 						<default.http.port>${testServerHttpPort}</default.http.port>
 						<default.https.port>${testServerHttpsPort}</default.https.port>
+						<appLocation>${project.artifactId}.war</appLocation>
 					</bootstrapProperties>
 				</configuration>
 				<executions>
@@ -352,9 +240,7 @@
 							</includes>
 							<systemPropertyVariables>
 								<liberty.test.port>${testServerHttpPort}</liberty.test.port>
-								<war.name>${warContext}</war.name>
-								<running.bluemix>${running.bluemix}</running.bluemix>
-								<cf.context.root>${cf.context.root}</cf.context.root>
+								<war.context>${warContext}</war.context>
 							</systemPropertyVariables>
 						</configuration>
 					</execution>
