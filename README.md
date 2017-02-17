@@ -17,7 +17,7 @@ Once the server is running, the application will be available under [localhost:9
 1. Clone this project and import into Eclipse as an 'Existing Maven Project'.
 2. Right click the project and select `Run As` -> `Maven Clean`.
 3. Right click the project and select `Run As` -> `Maven Install`.
-4. Right click the project and select `Run As` -> `Maven Build...` then run the goal `liberty:install-server`.
+4. Right click the project and select `Run As` -> `Maven Build...` then run the goal `liberty:run-server`.
 5. You should see the following in the console: `Application JAXWSWebSample started in XX.XX seconds.`
 
 ## Running with Maven
