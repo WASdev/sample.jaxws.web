@@ -39,12 +39,6 @@ Use the following steps to run the application with Maven:
 In your browser, enter the URL for the application: [localhost:9131/jaxws](http://localhost:9131/jaxws/) (where port 9131 assumes the httpEndpoint provided in the sample server.xml has not been modified).
 There are 7 scenarios for different JAX-WS features in the left. You can navigate each scenario to experience these features.
 
-## Deploying to Bluemix
-
-Click the button below to deploy your own copy of this application to [Bluemix](https://bluemix.net).
-
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WASdev/sample.jaxws.web.git)
-
 # Notice
 
 © Copyright IBM Corporation 2017.
