@@ -173,12 +173,6 @@
         		<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<packagingExcludes>pom.xml</packagingExcludes>
-         			<webResources>
-           				<resource>
-            			<!-- this is relative to the pom.xml directory -->
-             			<directory>resources</directory>
-            			</resource>
-          			</webResources>
         		</configuration>
       		</plugin>
 			<!-- Enable liberty-maven plugin -->
