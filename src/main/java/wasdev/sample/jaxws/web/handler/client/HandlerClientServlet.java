@@ -14,11 +14,11 @@ import javax.xml.ws.WebServiceRef;
 import wasdev.sample.jaxws.web.BaseClientServlet;
 
 @WebServlet("/HandlerClientServlet")
+@HandlerChain(file = "handler-client.xml")
 public class HandlerClientServlet extends BaseClientServlet {
 
     private static final long serialVersionUID = -5916044635761262727L;
 
-    @HandlerChain(file = "handler-client.xml")
     @WebServiceRef(value = RouteTrackerService.class)
     private RouteTracker routeTracker;
 
