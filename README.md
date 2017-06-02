@@ -15,10 +15,8 @@ Once the server is running, the application will be available under [http://loca
 ## Running in Eclipse with Maven
 
 1. Clone this project and import into Eclipse as an 'Existing Maven Project'.
-2. Right-click the project and select **Run As > Maven Clean**.
-3. Right-click the project and select **Run As > Maven Install**.
-4. Right-click the project and select **Run As > Run on Server**.
-5. You should see the following message in the console: `Application JAXWSWebSample started in XX.XX seconds.`
+2. Right-click the project and select **Run As > Run on Server**.
+3. You should see the following message in the console: `Application JAXWSWebSample started in XX.XX seconds.`
 
 ## Running with Maven
 
