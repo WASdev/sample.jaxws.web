@@ -1,4 +1,4 @@
-Web Services Sample
+Web Services Sample [![Build Status](https://travis-ci.org/WASdev/sample.jaxws.web.svg?branch=master)](https://travis-ci.org/WASdev/sample.jaxws.web)
 ==============
 
 The WebSphere Application Server Liberty Profile `jaxws-2.2` feature, included in the extended content for the Liberty Profile, supports the Java API for XML-Based Web Services. With this feature, it is easy to develop web services applications on the Liberty profile.
