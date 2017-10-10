@@ -39,7 +39,7 @@ There are 7 scenarios for different JAX-WS features in the left. You can navigat
 
 ## Gradle
 
-The sample can be built using [Gradle](https://gradle.org/) and the [Liberty Gradle Plugin][]. In the directory where you cloned the repository issue the following command to build and run the project.
+The sample can be built using [Gradle](https://gradle.org/) and the [Liberty Gradle Plug-in][]. In the directory where you cloned the repository issue the following command to build and run the project.
 
     $ gradle build
 
