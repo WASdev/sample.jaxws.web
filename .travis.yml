@@ -3,4 +3,4 @@ jdk:
   - openjdk8
 script:
   - mvn install
-  - gradle build libertyStop
+  - ./gradlew build libertyStop
