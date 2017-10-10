@@ -40,7 +40,8 @@ dependencies {
 }
 
 //The HandlerChain class expects the Handler files in the classes folder.
-//Because of this the resources directory needs to be merged with the classes directory so the files are in the correct location.
+//Because of this the resources directory needs to be merged with the classes directory
+//so the files are in the correct location.
 sourceSets {
     main {
         output.resourcesDir = 'build/classes/java/main'
