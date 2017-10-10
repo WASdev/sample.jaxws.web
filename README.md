@@ -28,11 +28,9 @@ Use the following steps to run the application with Maven:
 
     $ mvn clean install
 
-
 2. To run the server with the Servlet sample execute:
 
     $ mvn liberty:run-server
-
 
 In your browser, enter the URL for the application: [http://localhost:9131/jaxws](http://localhost:9131/jaxws/) (where port 9131 assumes the httpEndpoint provided in the sample server.xml has not been modified).
 There are 7 scenarios for different JAX-WS features in the left. You can navigate each scenario to experience these features.
