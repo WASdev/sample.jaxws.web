@@ -46,9 +46,9 @@ To start the application use the command:
     $ gradle libertyStart
 
 To stop the application use the command:
-    ```bash
+
     $ gradle libertyStop
-    ```
+
 The application can be reached at [http://localhost:9131/jaxws](http://localhost:9131/jaxws/).
 
 # Notice
