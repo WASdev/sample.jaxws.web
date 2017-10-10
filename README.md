@@ -38,13 +38,13 @@ There are 7 scenarios for different JAX-WS features in the left. You can navigat
 ## Gradle
 
 The sample can be built using [Gradle](https://gradle.org/) and the [Liberty Gradle Plug-in][]. In the directory where you cloned the repository issue the following command to build and run the project.
-    ```bash
+
     $ gradle build
-    ```
+
 To start the application use the command:
-    ```bash
+
     $ gradle libertyStart
-    ```
+
 To stop the application use the command:
     ```bash
     $ gradle libertyStop
