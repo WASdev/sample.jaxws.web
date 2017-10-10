@@ -1,8 +1,7 @@
 apply plugin: 'war'
-apply plugin: 'maven'
 apply plugin: 'liberty'
 
-group = 'liberty.maven'
+group = 'net.wasdev.wlp.sample.jaxws'
 version = '1.0-SNAPSHOT'
 
 description = "Jaxws Web Sample"
@@ -51,23 +50,21 @@ war {
 }
 
 liberty {
-
-	server {
+    server {
         packageLiberty {
             archive = "$buildDir/sample.jaxws.web.zip"
             include = 'usr'
         }
-		configFile = file('src/main/liberty/config/server.xml')
-		bootstrapProperties = ['appLocation':war.archiveName]
-        //looseApplication = false
-		apps = [war]
-	}
+        configFile = file('src/main/liberty/config/server.xml')
+        bootstrapProperties = ['appLocation':war.archiveName]
+        apps = [war]
+    }
 }
 
 task printServerMessage {
-	doLast {
-		println 'The server is running at http://localhost:9131/jaxws/'
-	}
+    doLast {
+        println 'The server is running at http://localhost:9131/jaxws/'
+    }
 }
 
 check.dependsOn 'libertyStart'
