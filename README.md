@@ -20,7 +20,7 @@ Once the server is running, the application will be available under [http://loca
 
 ## Running with Maven
 
-This project can be built with [Apache Maven](http://maven.apache.org/). The project uses [Liberty Maven Plug-in][] to automatically download and install Liberty with Java EE7 Full Platform runtime from the Maven Central. Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
+This project can be built with [Apache Maven](http://maven.apache.org/). The project uses [Liberty Maven Plug-in] to automatically download and install Liberty with Java EE 7 Full Platform runtime from the Maven Central. Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server.
 
 Use the following steps to run the application with Maven:
 
@@ -28,14 +28,28 @@ Use the following steps to run the application with Maven:
     ```bash
     $ mvn clean install
     ```
-
 2. To run the server with the Servlet sample execute:
     ```bash
     $ mvn liberty:run-server
     ```
-
 In your browser, enter the URL for the application: [http://localhost:9131/jaxws](http://localhost:9131/jaxws/) (where port 9131 assumes the httpEndpoint provided in the sample server.xml has not been modified).
 There are 7 scenarios for different JAX-WS features in the left. You can navigate each scenario to experience these features.
+
+## Gradle
+
+The sample can be built using [Gradle](https://gradle.org/) and the [Liberty Gradle Plug-in]. In the directory where you cloned the repository issue the following command to build and run the project.
+
+    $ gradle build
+
+To start the application use the command:
+
+    $ gradle libertyStart
+
+To stop the application use the command:
+
+    $ gradle libertyStop
+
+The application can be reached at [http://localhost:9131/jaxws](http://localhost:9131/jaxws/).
 
 # Notice
 
@@ -58,4 +72,4 @@ limitations under the License.
 ````
 
 [Liberty Maven Plug-in]: https://github.com/WASdev/ci.maven
-
+[Liberty Gradle Plug-in]: https://github.com/WASdev/ci.gradle
