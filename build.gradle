@@ -1,3 +1,4 @@
+apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'liberty'
 
@@ -18,7 +19,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.6.3'
+        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.6.5'
     }
 }
 
@@ -27,8 +28,9 @@ repositories {
 }
 
 dependencies {
-    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-javaee7', version: '17.0.0.2'
+    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-javaee8', version: '19.0.0.8'
 
+    compile 'com.sun.xml.ws:jaxws-ri:2.3.2'
     providedCompile group: 'org.apache.cxf', name: 'cxf-rt-rs-client', version:'3.1.1'
     providedCompile group: 'org.glassfish', name: 'javax.json', version:'1.0.4'
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
